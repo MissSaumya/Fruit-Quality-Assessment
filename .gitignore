@@ -1,0 +1,13 @@
+# Python environment
+fruit_env/
+__pycache__/
+*.pyc
+
+# Research Data & Weights (Privacy)
+*.pth
+/Dataset/
+uploads/
+
+# OS files
+.DS_Store
+Thumbs.db

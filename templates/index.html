@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Quality Assessment | SOTA AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="brand-header">
+                <h1>🍎 Fruit Quality Assessment</h1>
+                <p>SOTA Vision Transformer (ViT) Research</p>
+            </div>
+
+            <nav class="actions-nav">
+                <div class="action-card">
+                    <h3>Manual Upload</h3>
+                    <form action="/upload" method="post" enctype="multipart/form-data" id="upload-form">
+                        <label class="upload-trigger">
+                            <span class="btn-icon">📤</span>
+                            <span class="btn-label">Choose Fruit Image</span>
+                            <input type="file" name="file" onchange="this.form.submit()" hidden>
+                        </label>
+                    </form>
+                </div>
+
+                <div class="action-card">
+                    <h3>Dataset Testing</h3>
+                    <button class="shuffle-action-btn" onclick="startShuffle()">
+                        <span id="btn-text">🎲 Shuffle & Predict</span>
+                    </button>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>M.Tech AI Project • 2026</p>
+                
+            </div>
+        </aside>
+
+        <main class="main-viewport">
+            {% if prediction %}
+            <div class="assessment-dashboard fade-in">
+                <div class="dashboard-header">
+                    <span class="mode-indicator">{{ mode }}</span>
+                    <h1 class="verification-status">{{ is_correct }}</h1>
+                </div>
+
+                <div class="analysis-grid">
+                    <div class="visual-panel">
+                        <img src="{{ url_for('static', filename='current_img.jpg') }}?{{ range(1, 10000) | random }}" alt="Assessed Fruit">
+                    </div>
+
+                    <div class="data-panel">
+                        <div class="metric-group">
+                            <div class="metric-header">
+                                <span class="metric-label">Detected Fruit Type</span>
+                                <span class="metric-value">{{ prediction.split(' (')[0] }}</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill fruit-bar" style="width: {{ confidence }}%"></div>
+                            </div>
+                        </div>
+
+                        <div class="metric-group">
+                            <div class="metric-header">
+                                <span class="metric-label">Quality Condition</span>
+                                <span class="metric-value">{{ prediction.split('(')[1].replace(')', '') }}</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill qual-bar" style="width: {{ confidence }}%"></div>
+                            </div>
+                        </div>
+
+                        <div class="confidence-summary">
+                            <p>Prediction Confidence</p>
+                            <h2>{{ confidence }}%</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="empty-state-view">
+                <div class="welcome-box">
+                    <h2>System Ready</h2>
+                    <p>Select an image from the sidebar to begin automated fruit quality assessment.</p>
+                </div>
+            </div>
+            {% endif %}
+        </main>
+    </div>
+
+    <script>
+        function startShuffle() {
+            const btn = document.getElementById('btn-text');
+            btn.innerHTML = "🌀 Searching Dataset...";
+            setTimeout(() => {
+                window.location.href = "/random_sample";
+            }, 600);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+:root {
+    --primary: #6366f1;
+    --accent: #f43f5e;
+    --bg-main: #0b0f1a;
+    --sidebar-bg: #111827;
+    --card-bg: rgba(255, 255, 255, 0.04);
+    --success: #10b981;
+    --text-muted: #94a3b8;
+}
+
+* { box-sizing: border-box; }
+
+/* 1. Reset and Full Page Setup */
+body, html {
+    margin: 0; 
+    padding: 0;
+    height: 100%; 
+    width: 100%;
+    background: var(--bg-main);
+    color: white;
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow: hidden; /* Prevents scrollbars on the wrapper */
+}
+
+/* 2. Flexbox Wrapper for Sidebar and Content */
+.app-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* 3. Sidebar Styling */
+.sidebar {
+    width: 340px;
+    background: var(--sidebar-bg);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-header h1 { 
+    font-size: 1.4rem; 
+    color: var(--primary); 
+    margin: 0; 
+}
+
+.brand-header p { 
+    font-size: 0.8rem; 
+    color: var(--text-muted); 
+    margin-top: 8px; 
+}
+
+.actions-nav { 
+    margin-top: 3.5rem; 
+    flex-grow: 1; 
+}
+
+.action-card { 
+    margin-bottom: 2.5rem; 
+}
+
+.action-card h3 { 
+    font-size: 0.8rem; 
+    text-transform: uppercase; 
+    color: var(--text-muted); 
+    margin-bottom: 1.2rem; 
+}
+
+/* 4. Controls Styling */
+.upload-trigger {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    border: 2px dashed #374151; 
+    padding: 25px; 
+    border-radius: 12px;
+    cursor: pointer; 
+    transition: 0.3s;
+}
+
+.upload-trigger:hover { 
+    border-color: var(--primary); 
+    background: rgba(99, 102, 241, 0.1); 
+}
+
+.shuffle-action-btn {
+    width: 100%; 
+    padding: 1.2rem; 
+    border-radius: 12px; 
+    border: none;
+    background: linear-gradient(135deg, var(--primary), #a855f7);
+    color: white; 
+    font-weight: bold; 
+    cursor: pointer;
+}
+
+/* 5. Main Content Area Setup */
+.main-viewport {
+    flex-grow: 1;
+    padding: 4rem;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.assessment-dashboard {
+    width: 100%;
+    max-width: 1100px;
+}
+
+.dashboard-header { 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+    padding-bottom: 1.5rem; 
+    margin-bottom: 3rem; 
+}
+
+.mode-indicator { 
+    background: var(--primary); 
+    padding: 4px 12px; 
+    border-radius: 20px; 
+    font-size: 0.7rem; 
+}
+
+.verification-status { 
+    font-size: 3rem; 
+    margin: 12px 0 0 0; 
+    color: var(--success); 
+}
+
+/* 6. Results Grid */
+.analysis-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 4rem; 
+}
+
+.visual-panel img {
+    width: 100%; 
+    border-radius: 24px; 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}
+
+.data-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.metric-group { 
+    background: var(--card-bg); 
+    padding: 1.5rem; 
+    border-radius: 16px; 
+}
+
+.metric-header { 
+    display: flex; 
+    justify-content: space-between; 
+    margin-bottom: 10px; 
+}
+
+.metric-label { 
+    font-size: 0.85rem; 
+    color: var(--text-muted); 
+}
+
+.metric-value { 
+    font-size: 1.6rem; 
+    font-weight: 600; 
+}
+
+/* 7. Progress Bars */
+.progress-track { 
+    height: 8px; 
+    background: rgba(255, 255, 255, 0.1); 
+    border-radius: 10px; 
+    overflow: hidden; 
+}
+
+.progress-fill { 
+    height: 100%; 
+    transition: width 1s ease-out; 
+}
+
+.fruit-bar { background: var(--primary); }
+.qual-bar { background: #a855f7; }
+
+.confidence-summary h2 { 
+    font-size: 2.8rem; 
+    margin: 5px 0 0 0; 
+    color: #fbbf24; 
+}
+
+/* 8. Animations */
+.fade-in { animation: pageFadeIn 0.8s ease-out; }
+@keyframes pageFadeIn { 
+    from { opacity: 0; transform: translateY(20px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
