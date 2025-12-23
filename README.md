@@ -1,3 +1,5 @@
+Fruit Quality Assessment: SOTA Dual-Head Vision Transformer
+
 An end-to-end deep learning system designed for the automated classification and quality assessment of fruits. This project utilizes a custom Multi-Head Vision Transformer (ViT-B/16) architecture to simultaneously predict fruit type and quality condition (Fresh, Rotten, or Formalin-mixed).
 
 🖥️ Frontend Interface
@@ -59,3 +61,4 @@ python app.py
 Navigate to http://127.0.0.1:5000 in your browser.
 
 ![Fruit Quality Screenshot](demo.png)
+
